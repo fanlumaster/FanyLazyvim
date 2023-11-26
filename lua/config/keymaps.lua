@@ -73,3 +73,13 @@ end, { desc = "Close current buffer" })
 map("n", "<leader>th", "<cmd>ToggleTerm size=15 direction=horizontal<cr>", { desc = "ToggleTerm horizontal split" })
 map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
 map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "ToggleTerm vertical split" })
+
+-- programming language about
+-- run single python codes
+map("n", "<leader>py", '<cmd>TermExec cmd="python %"<cr>', { desc = "Run python codes" })
+-- run java maven project
+map("n", "<leader>ja",  function()
+  local current_file = vim.fn.expand("%:p")
+  local cmd_str = "TermExec cmd=" .. '"C:\\EDisk\\powershellCodes\\javaScripts\\run.ps1' .. " " .. current_file .. '"'
+  vim.cmd(cmd_str)
+end, { desc = "Run java codes" })
