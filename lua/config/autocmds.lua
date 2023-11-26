@@ -14,3 +14,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false -- 覆盖默认的 true
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("associate_filetype"),
+  pattern = { "htmldjango" },
+  callback = function()
+    vim.api.nvim_command("set filetype=html")
+  end,
+})

@@ -10,8 +10,8 @@ return {
         -- style = "moon",
         -- transparent = true,
         styles = {
-          -- sidebars = "transparent",
           -- floats = "transparent",
+          sidebars = "transparent",
           comments = { italic = false },
           keywords = { italic = false },
           functions = { italic = false },
