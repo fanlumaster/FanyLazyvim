@@ -51,5 +51,11 @@ end, { desc = "Go to previous any end of words" })
 map({ "n", "v" }, "<leader><leader>a", function()
   hop.hint_anywhere({})
 end, { desc = "Go to any char" })
-
-
+-- leader leader j
+map({ "n", "v" }, "<leader><leader>j", function()
+  hop.hint_lines({ direction = directions.AFTER_CURSOR })
+end, { desc = "Go to line below" })
+-- leader leader k
+map({ "n", "v" }, "<leader><leader>k", function()
+  hop.hint_lines({ direction = directions.BEFORE_CURSOR })
+end, { desc = "Go to line above" })
