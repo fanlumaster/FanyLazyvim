@@ -46,10 +46,10 @@ require("lazy").setup({
 })
 
 -- 设置光标的颜色默认为拉姆的发(fà)色
-vim.cmd('highlight Cursor gui=NONE guifg=bg guibg=#ffb6c1')
+vim.cmd("highlight Cursor gui=NONE guifg=bg guibg=#ffb6c1")
 
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 -- 添加 <leader>w 来保存当前buffer 的映射
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-unmap("n", "<leader><space>")
+unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })

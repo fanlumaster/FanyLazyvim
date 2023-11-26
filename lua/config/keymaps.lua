@@ -12,6 +12,8 @@ unmap("n", "<leader>wd", { desc = "Delete window" })
 unmap("n", "<leader>w-", { desc = "Split window below" })
 unmap("n", "<leader>w|", { desc = "Split window right" })
 
+unmap("n", "<leader>l", { desc = "Lazy" })
+
 -- toggle color between 雷姆蓝 and 拉姆粉
 local color_switch = 0
 local function toggle_color()
@@ -59,3 +61,15 @@ end, { desc = "Go to line below" })
 map({ "n", "v" }, "<leader><leader>k", function()
   hop.hint_lines({ direction = directions.BEFORE_CURSOR })
 end, { desc = "Go to line above" })
+
+map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+map("n", "<leader>r", function()
+  require("mini.bufremove").delete(0, true)
+end, { desc = "Close current buffer" })
+
+-- toggleterm
+map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "ToggleTerm horizontal split" })
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
+map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "ToggleTerm vertical split" })
