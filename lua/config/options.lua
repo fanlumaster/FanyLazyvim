@@ -19,3 +19,5 @@ opt.shell = "pwsh"
 opt.shellcmdflag = "-command"
 opt.shellquote = '"'
 opt.shellxquote = ""
+opt.modelines = 0
+opt.cmdheight = 0
