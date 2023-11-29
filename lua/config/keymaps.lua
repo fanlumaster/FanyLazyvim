@@ -65,7 +65,7 @@ end, { desc = "Go to line above" })
 map("n", "]t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "[t", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
-map("n", "<leader>r", function()
+map("n", "<leader>v", function()
   require("mini.bufremove").delete(0, true)
 end, { desc = "Close current buffer" })
 

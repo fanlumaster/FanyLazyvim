@@ -7,10 +7,9 @@ return {
     priority = 1000,
     opts = function()
       return {
-        -- style = "moon",
-        -- transparent = true,
+        style = "night",
         styles = {
-          -- floats = "transparent",
+          floats = "transparent",
           sidebars = "transparent",
           comments = { italic = false },
           keywords = { italic = false },

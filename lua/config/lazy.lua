@@ -52,4 +52,6 @@ local map = vim.keymap.set
 local unmap = vim.keymap.del
 -- 添加 <leader>w 来保存当前buffer 的映射
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
+map("n", "<leader><leader>q", "<cmd>q<cr>", { desc = "Save" })
+-- 虽然代码里面使用的是 <leader><space>，但是，只有使用对 <leader><leader> 才能解绑彻底
+unmap("n", "<leader><leader>", { desc = "Find Files (root dir)" })
