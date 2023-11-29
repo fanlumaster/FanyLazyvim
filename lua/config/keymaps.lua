@@ -84,7 +84,7 @@ map("n", "<leader>ja", function()
   vim.cmd(cmd_str)
 end, { desc = "Run java codes" })
 
--- 定制移动 buffer 的快捷键
+-- 移动 buffer
 local moveBy = function(dir)
   if dir == "left" then
     dir = -1
@@ -100,9 +100,10 @@ local moveBy = function(dir)
     myBufferline.move(dir)
   end
 end
+
 vim.keymap.set("n", "<b", function()
-  moveBy("Move current buffer to left")
-end, {})
+  moveBy("left")
+end, { desc = "Move current buffer to left" })
 vim.keymap.set("n", ">b", function()
-  moveBy("Move current buffer to right")
-end, {})
+  moveBy("right")
+end, { desc = "Move current buffer to right" })
