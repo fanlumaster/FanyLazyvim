@@ -6,6 +6,8 @@ return {
       -- autopep8 似乎要比 black 要快一些
       ["python"] = { "autopep8" },
       ["css"] = { "prettier" },
+      ["html"] = { "html-lsp" },
+      ["htmldjango"] = { "html-lsp" },
     },
   },
 }

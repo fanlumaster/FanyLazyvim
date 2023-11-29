@@ -78,8 +78,31 @@ map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc 
 -- run single python codes
 map("n", "<leader>py", '<cmd>TermExec cmd="python %"<cr>', { desc = "Run python codes" })
 -- run java maven project
-map("n", "<leader>ja",  function()
+map("n", "<leader>ja", function()
   local current_file = vim.fn.expand("%:p")
   local cmd_str = "TermExec cmd=" .. '"C:\\EDisk\\powershellCodes\\javaScripts\\run.ps1' .. " " .. current_file .. '"'
   vim.cmd(cmd_str)
 end, { desc = "Run java codes" })
+
+-- 定制移动 buffer 的快捷键
+local moveBy = function(dir)
+  if dir == "left" then
+    dir = -1
+  else
+    dir = 1
+  end
+  local moveBy = vim.v.count
+  if moveBy == 0 then
+    moveBy = 1
+  end
+  local myBufferline = require("bufferline")
+  for _ = 1, moveBy, 1 do
+    myBufferline.move(dir)
+  end
+end
+vim.keymap.set("n", "<b", function()
+  moveBy("Move current buffer to left")
+end, {})
+vim.keymap.set("n", ">b", function()
+  moveBy("Move current buffer to right")
+end, {})
