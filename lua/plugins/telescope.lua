@@ -1,6 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
+    -- disable the default keymap to search files
+    { "<leader><space>", false },
     -- disable the keymap to grep file
     { "<leader>/", false },
     -- change a keymap
