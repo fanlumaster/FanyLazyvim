@@ -107,3 +107,6 @@ end, { desc = "Move current buffer to left" })
 vim.keymap.set("n", ">b", function()
   moveBy("right")
 end, { desc = "Move current buffer to right" })
+
+-- for persisted
+map("n", "<leader>fs", "<cmd>Telescope persisted<cr>", { desc = "Search history sessions" })
