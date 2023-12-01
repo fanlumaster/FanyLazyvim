@@ -22,3 +22,11 @@ vim.api.nvim_create_autocmd("FileType", {
 --     vim.api.nvim_command("set filetype=html")
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("associate_filetype"),
+  pattern = { "c", "cpp" },
+  callback = function()
+    vim.opt.shiftwidth = 4
+  end,
+})
