@@ -113,3 +113,20 @@ map("n", "<leader>fs", "<cmd>Telescope persisted<cr>", { desc = "Search history 
 
 -- for cancel of highlight
 map("n", "<leader>h", "<cmd>noh<cr>", { desc = "Cancel highlight" })
+
+-- change filtetype between html and htmldjango
+map("n", "<leader><leader>d", "<cmd>set filetype=htmldjango<cr>", { desc = "Cancel highlight" })
+
+-- toggle current filetype between html and htmldjango, this is mainly used to toggle highlight of treesitter between html and htmldjango
+local function toggle_between_html_and_dj()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local filetype = vim.bo[bufnr].filetype
+  if filetype == "html" then
+    vim.cmd("set filetype=htmldjango")
+  elseif filetype == "htmldjango" then
+    vim.cmd("set filetype=html")
+  end
+end
+map("n", "<leader><leader>t", function()
+  toggle_between_html_and_dj()
+end, { desc = "Toggle html and htmldjango" })

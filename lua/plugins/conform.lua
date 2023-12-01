@@ -7,7 +7,6 @@ return {
       ["python"] = { "autopep8" },
       ["css"] = { "prettier" },
       ["html"] = { "html-lsp" },
-      ["htmldjango"] = { "html-lsp" },
     },
   },
 }
