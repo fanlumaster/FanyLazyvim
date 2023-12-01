@@ -130,3 +130,5 @@ end
 map("n", "<leader><leader>t", function()
   toggle_between_html_and_dj()
 end, { desc = "Toggle html and htmldjango" })
+
+
