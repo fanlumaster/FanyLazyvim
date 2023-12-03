@@ -21,6 +21,7 @@ opt.shellquote = '"'
 opt.shellxquote = ""
 opt.modelines = 0
 opt.showcmd = false
+opt.scrolloff = 0
 -- opt.showmode = false
 -- opt.laststatus = 0
 -- opt.cmdheight = 0

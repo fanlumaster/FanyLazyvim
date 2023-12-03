@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
 --   end,
 -- })
 
+-- change c/cpp file tab width to 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("associate_filetype"),
   pattern = { "c", "cpp" },
