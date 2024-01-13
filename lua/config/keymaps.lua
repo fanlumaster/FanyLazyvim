@@ -127,10 +127,10 @@ map("n", "<leader><leader>t", function()
 end, { desc = "Toggle html and htmldjango" })
 
 -- lsp about
--- unmap("n", "<leader>cl")
--- unmap({ "n", "v" }, "<leader>ca", { desc = "Code Action" })
--- unmap("n", "<leader>cA", { desc = "Source Action" })
--- unmap("n", "<leader>cr")
+-- unmap("n", "<leader>cl") -- 这个在 nvim-lspconfig 插件配置中进行取消映射
+-- unmap({ "n", "v" }, "<leader>ca", { desc = "Code Action" }) -- 这个在 nvim-lspconfig 插件配置中进行取消映射
+-- unmap("n", "<leader>cA", { desc = "Source Action" }) -- 这个在 nvim-lspconfig 插件配置中进行取消映射
+-- unmap("n", "<leader>cr") -- 这个在 nvim-lspconfig 插件配置中进行取消映射
 -- unmap("n", "<leader>cm") -- 这个在 mason 插件配置中进行取消映射
 -- unmap({ "n", "v" }, "<leader>cF") -- 这个在 mason 插件配置中进行取消映射
 
@@ -172,3 +172,6 @@ if require("lazyvim.util").has("inc-rename.nvim") then
 else
   map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 end
+
+-- 解决 visual 模式下只能粘贴一次的问题
+map("x", "p", "P")
