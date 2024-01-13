@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 local unmap = vim.keymap.del
+local Util = require("lazyvim.util")
 
 -- 去掉 <leader><leader> 来搜索文件的映射，转移到 lazy.lua 中去去除
 -- unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
@@ -77,12 +78,6 @@ map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc 
 -- programming language about
 -- run single python codes
 map("n", "<leader>py", '<cmd>TermExec cmd="python %"<cr>', { desc = "Run python codes" })
--- run java maven project
-map("n", "<leader>ja", function()
-  local current_file = vim.fn.expand("%:p")
-  local cmd_str = "TermExec cmd=" .. '"C:\\EDisk\\powershellCodes\\javaScripts\\run.ps1' .. " " .. current_file .. '"'
-  vim.cmd(cmd_str)
-end, { desc = "Run java codes" })
 
 -- 移动 buffer
 local moveBy = function(dir)
@@ -131,4 +126,49 @@ map("n", "<leader><leader>t", function()
   toggle_between_html_and_dj()
 end, { desc = "Toggle html and htmldjango" })
 
+-- lsp about
+-- unmap("n", "<leader>cl")
+-- unmap({ "n", "v" }, "<leader>ca", { desc = "Code Action" })
+-- unmap("n", "<leader>cA", { desc = "Source Action" })
+-- unmap("n", "<leader>cr")
+-- unmap("n", "<leader>cm") -- 这个在 mason 插件配置中进行取消映射
+-- unmap({ "n", "v" }, "<leader>cF") -- 这个在 mason 插件配置中进行取消映射
 
+unmap("n", "<leader>cd")
+unmap({ "n", "v" }, "<leader>cf")
+
+map("n", "<leader>lA", function()
+  vim.lsp.buf.code_action({
+    context = {
+      only = {
+        "source",
+      },
+      diagnostics = {},
+    },
+  })
+end, { desc = "Source Action" })
+
+map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
+-- formatting
+map({ "n", "v" }, "<leader>lf", function()
+  Util.format({ force = true })
+end, { desc = "Format" })
+
+map({ "n", "v" }, "<leader>lF", function()
+  require("conform").format({ formatters = { "injected" } })
+end, { desc = "Format Injected Langs" })
+
+map("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+
+map("n", "<leader>lm", "<cmd>Mason<cr>", { desc = "Mason" })
+if require("lazyvim.util").has("inc-rename.nvim") then
+  map("n", "<leader>lr", function()
+    local inc_rename = require("inc_rename")
+    return ":" .. inc_rename.config.cmd_name .. " " .. vim.fn.expand("<cword>")
+  end, { desc = "Rename" })
+else
+  map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+end

@@ -53,3 +53,4 @@ local map = vim.keymap.set
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 -- quit current window
 map("n", "<leader><leader>q", "<cmd>q<cr>", { desc = "Save" })
+
