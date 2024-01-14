@@ -132,7 +132,7 @@ end, { desc = "Toggle html and htmldjango" })
 -- unmap("n", "<leader>cA", { desc = "Source Action" }) -- 这个在 nvim-lspconfig 插件配置中进行取消映射
 -- unmap("n", "<leader>cr") -- 这个在 nvim-lspconfig 插件配置中进行取消映射
 -- unmap("n", "<leader>cm") -- 这个在 mason 插件配置中进行取消映射
--- unmap({ "n", "v" }, "<leader>cF") -- 这个在 mason 插件配置中进行取消映射
+-- unmap({ "n", "v" }, "<leader>cF") -- 这个在 conform 插件配置中进行取消映射
 
 unmap("n", "<leader>cd")
 unmap({ "n", "v" }, "<leader>cf")
@@ -173,5 +173,5 @@ else
   map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 end
 
--- 解决 visual 模式下只能粘贴一次的问题
+-- 解决 visual 选中粘贴替换只能粘贴一次的问题
 map("x", "p", "P")
