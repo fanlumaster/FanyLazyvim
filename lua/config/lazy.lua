@@ -45,9 +45,6 @@ require("lazy").setup({
   },
 })
 
--- 设置光标的颜色默认为拉姆的发(fà)色
-vim.cmd("highlight Cursor gui=NONE guifg=bg guibg=#ffb6c1")
-
 local map = vim.keymap.set
 -- TODO: 不知道为什么 <leader>w 和 <leader>c 无法在 which-key 中显示
 -- 添加 <leader>w 来保存当前buffer 的映射
