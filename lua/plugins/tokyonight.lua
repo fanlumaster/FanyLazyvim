@@ -1,22 +1,22 @@
 return {
-  { "shaunsingh/oxocarbon.nvim" },
-  { "ellisonleao/gruvbox.nvim" },
-  { "rose-pine/neovim", name = "rose-pine" },
-  {
-    "tokyonight.nvim",
-    priority = 1000,
-    opts = function()
-      return {
-        style = "night",
-        styles = {
-          floats = "transparent",
-          sidebars = "transparent",
-          comments = { italic = false },
-          keywords = { italic = false },
-          functions = { italic = false },
-          variables = { italic = false },
-        },
-      }
-    end,
-  },
+  "folke/tokyonight.nvim",
+  lazy = false,
+  opts = function()
+    local is_transparent = false
+    if not vim.g.neovide == true then
+      is_transparent = true
+    end
+    return {
+      style = "night",
+      transparent = is_transparent,
+      styles = {
+        floats = "transparent",
+        sidebars = "transparent",
+        comments = { italic = false },
+        keywords = { italic = false },
+        functions = { italic = false },
+        variables = { italic = false },
+      },
+    }
+  end,
 }
