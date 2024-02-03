@@ -2,7 +2,10 @@ return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
   opts = {
-    options = {},
+    options = {
+      indicator_icon = " ",
+      -- separator_style = {" ", " "},
+    },
     highlights = {
       buffer_selected = { italic = false, bold = false },
     },
