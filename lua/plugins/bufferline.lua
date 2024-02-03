@@ -3,8 +3,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      indicator_icon = " ",
-      -- separator_style = {" ", " "},
+      separator_style = {" ", " "},
     },
     highlights = {
       buffer_selected = { italic = false, bold = false },
