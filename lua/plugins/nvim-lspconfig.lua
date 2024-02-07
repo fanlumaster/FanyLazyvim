@@ -8,4 +8,14 @@ return {
     keys[#keys + 1] = { "<leader>cl", false }
     keys[#keys + 1] = { "<leader>cr", false }
   end,
+  opts = {
+    servers = {
+      -- Ensure mason installs the server
+      clangd = {
+        keys = {
+          { "<leader>cR", false },
+        },
+      },
+    },
+  },
 }
