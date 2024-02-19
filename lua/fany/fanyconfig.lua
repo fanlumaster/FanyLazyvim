@@ -1,3 +1,6 @@
+-- 设置 visual 模式下选中的背景高亮色
+vim.cmd("highlight Visual guibg=#135564")
+
 -- 设置光标的颜色默认为拉姆的发(fà)色
 vim.cmd("highlight Cursor gui=NONE guifg=bg guibg=#ffb6c1")
 
