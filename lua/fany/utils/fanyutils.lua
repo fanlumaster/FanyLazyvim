@@ -19,4 +19,12 @@ function myutils.copy_current_filename()
   vim.fn.setreg("+", clipboard_content)
 end
 
+-- 获取当前文件的相对路径
+-- 有利于在 cmake 中便捷地去修改要编译的单文件
+function myutils.copy_absolute_path()
+  local current_file = vim.fn.expand("%")
+  local clipboard_content = string.gsub(current_file, "\\", "/") -- 把默认的 \ 分隔符换成 /
+  vim.fn.setreg("+", clipboard_content)
+end
+
 return myutils
