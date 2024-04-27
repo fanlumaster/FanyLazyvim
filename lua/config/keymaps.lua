@@ -50,6 +50,20 @@ end, { desc = "Go to previous any begining of words" })
 map({ "n", "v" }, "<leader><leader>v", function()
   hop.hint_words({ direction = directions.BEFORE_CURSOR, hint_position = positions.END })
 end, { desc = "Go to previous any end of words" })
+-- leader leader l
+map({ "n", "v" }, "<leader><leader>l", function()
+  hop.hint_camel_case({ direction = directions.AFTER_CURSOR })
+end, { desc = "Go to next any begining of words" })
+-- leader leader h
+map({ "n", "v" }, "<leader><leader>h", function()
+  hop.hint_camel_case({ direction = directions.BEFORE_CURSOR })
+end, { desc = "Go to previous any begining of words" })
+
+-- leader leader f
+map({ "n", "v" }, "<leader><leader>h", function()
+  hop.hint_camel_case({ direction = directions.BEFORE_CURSOR })
+end, { desc = "Go to previous any begining of words" })
+
 -- leader leader a
 map({ "n", "v" }, "<leader><leader>a", function()
   hop.hint_anywhere({})
