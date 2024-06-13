@@ -192,14 +192,20 @@ end
 -- 解决 visual 选中粘贴替换只能粘贴一次的问题
 map("x", "p", "P")
 
--- unmap for moving lines
-unmap({ "n", "i" }, "<A-j>")
-unmap({ "n", "i" }, "<A-k>")
+map({ "i" }, "<Esc-j>", "<Esc-Esc-j>")
+map({ "i" }, "<Esc-k>", "<Esc-Esc-k>")
 
--- remap for moving lines
-map("n", "<C-A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-map("n", "<C-A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-map("i", "<C-A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<C-A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<C-A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<C-A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+-- TODO: 目前无法规避这个问题：1、在 Windows Terminal 中同时按下 Esc + j/k 会等效于 Alt + j/k，这样就会触发 Alt + j/k 绑定的 swap lines 的功能；2、而在 Neovide 中，在 Windows 下，其无法响应 Ctrl + Alt + j/k 的快捷键，那么，只能采取以下折中的方法暂时规避。按：在 Arch + KDE(wayland) 中这些都是正常的
+if not vim.g.neovide then
+  -- unmap for moving lines
+  unmap({ "n", "i" }, "<A-j>")
+  unmap({ "n", "i" }, "<A-k>")
+
+  -- remap for moving lines
+  map("n", "<C-A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+  map("n", "<C-A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+  map("i", "<C-A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+  map("i", "<C-A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+  map("v", "<C-A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+  map("v", "<C-A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+end
