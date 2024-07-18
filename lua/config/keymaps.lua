@@ -7,11 +7,9 @@ local Util = require("lazyvim.util")
 
 -- 去掉 <leader><leader> 来搜索文件的映射，转移到 lazy.lua 中去去除
 -- unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
--- 去掉 <leader>w 的映射
-unmap("n", "<leader>ww", { desc = "Other window" })
-unmap("n", "<leader>wd", { desc = "Delete window" })
-unmap("n", "<leader>w-", { desc = "Split window below" })
-unmap("n", "<leader>w|", { desc = "Split window right" })
+-- remove the mapping of <leader>w
+unmap("n", "<leader>w", { desc = "Windows" }) -- This is optional, does not has the real effect, the effective code is located in which-key.lua file
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current change", remap = true })
 
 unmap("n", "<leader>l", { desc = "Lazy" })
 
