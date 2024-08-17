@@ -5,6 +5,23 @@ local map = vim.keymap.set
 local unmap = vim.keymap.del
 local Util = require("lazyvim.util")
 
+-- map some basic shortcuts
+map("n", "<leader><leader>q", "<cmd>q<cr>", { desc = "Quit Current Window" })
+map("n", "<leader>c", function()
+  local bd = require("mini.bufremove").delete
+  if vim.bo.modified then
+    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+    if choice == 1 then -- Yes
+      vim.cmd.write()
+      bd(0)
+    elseif choice == 2 then -- No
+      bd(0, true)
+    end
+  else
+    bd(0)
+  end
+end, { noremap = true, desc = "Delete Buffer" })
+
 -- 去掉 <leader><leader> 来搜索文件的映射，转移到 lazy.lua 中去去除
 -- unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
 -- remove the mapping of <leader>w
@@ -14,7 +31,7 @@ map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current change", remap = true
 unmap("n", "<leader>l", { desc = "Lazy" })
 
 -- toggle color between 雷姆蓝 and 拉姆粉
-local color_switch = 0
+local color_switch = 1
 local function toggle_color()
   if color_switch == 1 then
     color_switch = 0
@@ -140,9 +157,9 @@ local function toggle_between_html_and_dj()
     vim.cmd("set filetype=html")
   end
 end
-map("n", "<leader><leader>t", function()
-  toggle_between_html_and_dj()
-end, { desc = "Toggle html and htmldjango" })
+-- map("n", "<leader><leader>t", function()
+--   toggle_between_html_and_dj()
+-- end, { desc = "Toggle html and htmldjango" })
 
 -- lsp about
 -- unmap("n", "<leader>cl") -- 这个在 nvim-lspconfig 插件配置中进行取消映射

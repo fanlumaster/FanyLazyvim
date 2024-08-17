@@ -1,6 +1,6 @@
 return {
   "folke/tokyonight.nvim",
-  lazy = false,
+  lazy = true,
   opts = function()
     local is_transparent = false
     if not vim.g.neovide == true then
