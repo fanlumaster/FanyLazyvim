@@ -13,6 +13,7 @@ return {
           desc = "Save current file",
         },
       },
+      { "<leader>wm", hidden = true },
     },
   },
   config = function(_, opts)

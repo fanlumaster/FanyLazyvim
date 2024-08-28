@@ -26,6 +26,8 @@ end, { noremap = true, desc = "Delete Buffer" })
 -- unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
 -- remove the mapping of <leader>w
 unmap("n", "<leader>w", { desc = "Windows" }) -- This is optional, does not has the real effect, the effective code is located in which-key.lua file
+unmap("n", "<leader>wd", { desc = "Windows" })
+unmap("n", "<leader>wm", { desc = "Enable Maximize" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save current change", remap = true })
 
 unmap("n", "<leader>l", { desc = "Lazy" })
