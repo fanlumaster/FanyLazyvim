@@ -1,3 +1,7 @@
+if vim.g.neovide then
+  vim.cmd.colorscheme("catppuccin")
+end
+
 -- 设置 visual 模式下选中的背景高亮色
 vim.cmd("highlight Visual guibg=#135564")
 
@@ -9,4 +13,4 @@ vim.cmd("highlight Cursor gui=NONE guifg=bg guibg=#ffb6c1")
 vim.api.nvim_command("highlight HopNextKey guifg=#FF7369 guibg=none gui=none ctermfg=none cterm=bold")
 
 -- 解决 python 在定义函数参数时按下 : 会自动缩进的问题
-vim.api.nvim_command('set indentkeys-=<:>')
+vim.api.nvim_command("set indentkeys-=<:>")
