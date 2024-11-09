@@ -1,6 +1,6 @@
 return {
   "nvimdev/dashboard-nvim",
-  event = "VimEnter",
+  lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
   opts = function()
     local logo = [[
          ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
@@ -33,16 +33,15 @@ return {
         header = vim.split(logo, "\n"),
         -- stylua: ignore
         center = {
-          { action = "Telescope find_files",                                     desc = " Find file",       icon = " ", key = "f" },
-          { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
-          { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },
-          { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
-          { action = [[lua require("lazyvim.util").telescope.config_files()()]], desc = " Config",          icon = " ", key = "c" },
-          { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
-          { action = 'Telescope persisted',                                      desc = " Search sessions", icon = " ", key = "S" },
-          { action = "LazyExtras",                                               desc = " Lazy Extras",     icon = " ", key = "x" },
-          { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
-          { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+          { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },
+          { action = "ene | startinsert",                              desc = " New File",        icon = " ", key = "n" },
+          { action = 'lua LazyVim.pick("oldfiles")()',                 desc = " Recent Files",    icon = " ", key = "r" },
+          { action = 'lua LazyVim.pick("live_grep")()',                desc = " Find Text",       icon = " ", key = "g" },
+          { action = 'lua LazyVim.pick.config_files()()',              desc = " Config",          icon = " ", key = "c" },
+          { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
+          { action = "LazyExtras",                                     desc = " Lazy Extras",     icon = " ", key = "x" },
+          { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
+          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
         },
         footer = function()
           local stats = require("lazy").stats()
@@ -57,13 +56,15 @@ return {
       button.key_format = "  %s"
     end
 
-    -- close Lazy and re-open when the dashboard is ready
+    -- open dashboard after closing lazy
     if vim.o.filetype == "lazy" then
-      vim.cmd.close()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "DashboardLoaded",
+      vim.api.nvim_create_autocmd("WinClosed", {
+        pattern = tostring(vim.api.nvim_get_current_win()),
+        once = true,
         callback = function()
-          require("lazy").show()
+          vim.schedule(function()
+            vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
+          end)
         end,
       })
     end
