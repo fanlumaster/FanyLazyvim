@@ -190,9 +190,14 @@ map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" 
 map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 
 -- formatting
-map({ "n", "v" }, "<leader>lf", function()
-  Util.format({ force = true })
-end, { desc = "Format" })
+if vim.g.vscode then
+  map("n", "<leader>lf", "<Cmd>lua require('vscode').call('editor.action.formatDocument')<CR>", { desc = "Format" })
+  map("v", "<leader>lf", "<Cmd>lua require('vscode').call('editor.action.formatSelection')<CR>", { desc = "Format" })
+else
+  map({ "n", "v" }, "<leader>lf", function()
+    Util.format({ force = true })
+  end, { desc = "Format" })
+end
 
 map({ "n", "v" }, "<leader>lF", function()
   require("conform").format({ formatters = { "injected" } })
