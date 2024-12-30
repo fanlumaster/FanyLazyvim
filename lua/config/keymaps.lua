@@ -7,20 +7,6 @@ local Util = require("lazyvim.util")
 
 -- map some basic shortcuts
 map("n", "<leader><leader>q", "<cmd>q<cr>", { desc = "Quit Current Window" })
-map("n", "<leader>c", function()
-  local bd = require("mini.bufremove").delete
-  if vim.bo.modified then
-    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-    if choice == 1 then -- Yes
-      vim.cmd.write()
-      bd(0)
-    elseif choice == 2 then -- No
-      bd(0, true)
-    end
-  else
-    bd(0)
-  end
-end, { noremap = true, desc = "Delete Buffer" })
 
 -- 去掉 <leader><leader> 来搜索文件的映射，转移到 lazy.lua 中去去除
 -- unmap("n", "<leader><space>", { desc = "Find Files (root dir)" })
