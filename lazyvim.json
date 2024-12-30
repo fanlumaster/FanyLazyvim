@@ -1,7 +1,9 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.luasnip",
-    "lazyvim.plugins.extras.lang.clangd"
+    "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.lang.clangd",
+    "lazyvim.plugins.extras.ui.treesitter-context"
   ],
   "news": {
     "NEWS.md": "10960"
