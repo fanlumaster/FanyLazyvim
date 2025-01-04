@@ -3,6 +3,7 @@ return {
   lazy = true,
   name = "catppuccin",
   opts = {
+    term_colors = true,
     custom_highlights = function()
       return {
         RainbowRed = { fg = "#E06C75" },
