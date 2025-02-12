@@ -41,8 +41,39 @@ command! -nargs=0 CpAbsolutePath lua require("fany.utils.fanyutils").copy_absolu
     vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
   end
 else
-  map("n", "<leader><leader>q", "<Cmd>lua require('vscode').call('workbench.action.closeWindow')<CR>", { desc = "Quit VSCode" })
-  map("n", "<leader>c", "<Cmd>lua require('vscode').call('workbench.action.closeEditorInAllGroups')<CR>", { desc = "Close Current Tab" })
-  map("n", "<leader>e", "<Cmd>lua require('vscode').call('workbench.action.toggleSidebarVisibility')<CR>", { desc = "toggleSidebarVisibility" })
-  map("n", "<leader>a", "<Cmd>lua require('vscode').call('workbench.action.toggleActivityBarVisibility')<CR>", { desc = "toggleActivityBarVisibility" })
+  map(
+    "n",
+    "<leader><leader>q",
+    "<Cmd>lua require('vscode').call('workbench.action.closeWindow')<CR>",
+    { desc = "Quit VSCode" }
+  )
+  map(
+    "n",
+    "<leader>c",
+    "<Cmd>lua require('vscode').call('workbench.action.closeEditorInAllGroups')<CR>",
+    { desc = "Close Current Tab" }
+  )
+  map(
+    "n",
+    "<leader>e",
+    "<Cmd>lua require('vscode').call('workbench.action.toggleSidebarVisibility')<CR>",
+    { desc = "toggleSidebarVisibility" }
+  )
+  map(
+    "n",
+    "<leader>a",
+    "<Cmd>lua require('vscode').call('workbench.action.toggleActivityBarVisibility')<CR>",
+    { desc = "toggleActivityBarVisibility" }
+  )
+  -- run js codes
+  map("n", "<leader>js", function()
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "clear\n" } })
+    -- require("vscode").call("workbench.action.terminal.focus")
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "bun '${file}'\n" } })
+  end, { desc = "Run JS or TS codes with node" })
+  -- run ahk scripts
+  map("n", "<leader>kk", function()
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "clear\n" } })
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "${file}\n" } })
+  end, { desc = "Run JS or TS codes with node" })
 end
