@@ -59,6 +59,14 @@ else
     "<Cmd>lua require('vscode').call('workbench.action.toggleSidebarVisibility')<CR>",
     { desc = "toggleSidebarVisibility" }
   )
+  -- reveal current active file in vscode explorer view
+  -- workbench.files.action.showActiveFileInExplorer
+  map(
+    "n",
+    "<leader>E",
+    "<Cmd>lua require('vscode').call('workbench.files.action.showActiveFileInExplorer')<CR>",
+    { desc = "reveal active file" }
+  )
   map(
     "n",
     "<leader>a",
