@@ -98,9 +98,11 @@ map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc 
 
 -- programming language about
 -- run single python codes
-map("n", "<leader>py", '<cmd>TermExec cmd="python %"<cr>', { desc = "Run python codes" })
--- run rust binary project
-map("n", "<leader>ru", '<cmd>TermExec cmd="cargo run"<cr>', { desc = "Run rust project" })
+if not vim.g.vscode then
+  map("n", "<leader>py", '<cmd>TermExec cmd="python %"<cr>', { desc = "Run python codes" })
+  -- run rust binary project
+  map("n", "<leader>ru", '<cmd>TermExec cmd="cargo run"<cr>', { desc = "Run rust project" })
+end
 
 -- 移动 buffer
 local moveBy = function(dir)

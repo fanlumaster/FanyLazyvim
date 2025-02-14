@@ -83,5 +83,10 @@ else
   map("n", "<leader>kk", function()
     require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "clear\n" } })
     require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "${file}\n" } })
-  end, { desc = "Run JS or TS codes with node" })
+  end, { desc = "Run ahk scripts" })
+  -- run python scripts
+  map("n", "<leader>py", function()
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "clear\n" } })
+    require("vscode").call("workbench.action.terminal.sendSequence", { args = { text = "python '${file}'\n" } })
+  end, { desc = "Run python scripts" })
 end
