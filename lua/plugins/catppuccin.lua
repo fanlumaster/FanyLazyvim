@@ -4,6 +4,7 @@ return {
   name = "catppuccin",
   opts = {
     term_colors = true,
+    transparent_background = true,
     custom_highlights = function()
       return {
         RainbowRed = { fg = "#E06C75" },
@@ -13,6 +14,7 @@ return {
         RainbowGreen = { fg = "#98C379" },
         RainbowViolet = { fg = "#C678DD" },
         RainbowCyan = { fg = "#56B6C2" },
+        CursorLine = { bg = "NONE" },
       }
     end,
     integrations = {
