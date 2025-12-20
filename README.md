@@ -12,6 +12,14 @@ Some Prerequisites:
     scoop bucket add nerd-fonts
     scoop install nerd-fonts/CascadiaCode-NF
     ```
+- nodejs & npm
+    ```powershell
+    scoop install nodejs
+    ```
+- tree-sitter-cli
+    ```powershell
+    npm install -g tree-sitter-cli
+    ```
 
 Effects are as follows,
 
