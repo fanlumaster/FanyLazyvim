@@ -16,6 +16,10 @@ Some Prerequisites:
     ```powershell
     scoop install nodejs
     ```
+- rg & fd
+    ```powershell
+    scoop install ripgrep fd
+    ```
 - tree-sitter-cli
     ```powershell
     npm install -g tree-sitter-cli
